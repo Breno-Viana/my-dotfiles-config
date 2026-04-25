@@ -1,0 +1,373 @@
+/* Author: Eduardo de Sá Coêlho Ribeiro Costa */
+/* Github: https://github.com/edudscrc */
+/* Waybar v0.12.0 */
+@define-color modules_background rgba(36, 39, 42, 0.5);
+
+@define-color workspaces_button_off #2d3035;
+@define-color workspaces_button_on #f0e6c8;
+
+@define-color spotify_idle #7eb8d4;
+@define-color spotify_hover #2d3035;
+
+@define-color tray_menu rgba(35, 49, 82, 0.5);
+@define-color tray_menu_border rgba(35, 49, 82, 1);
+@define-color tray_menu_item #f0e6c8;
+@define-color tray_menu_item_hover #2d3035;
+@define-color tray_menu_item_hover_background #2e2245;
+
+@define-color clock_idle #7eb8d4;
+@define-color clock_hover #2d3035;
+
+@define-color weather_idle #7eb8d4;
+@define-color weather_hover #5a9abf;
+
+@define-color temperature_idle #7eb8d4;
+@define-color temperature_hover #a05a8a;
+
+@define-color brightness_idle #7eb8d4;
+@define-color brightness_hover #2d3035;
+
+@define-color sound_idle #7eb8d4;
+@define-color sound_hover #2d3035;
+
+@define-color bluetooth_idle #7eb8d4;
+@define-color bluetooth_hover #2d3035;
+
+@define-color network_idle #7eb8d4;
+@define-color network_hover #2d3035;
+
+@define-color power_idle #7eb8d4;
+@define-color power_hover #2d3035;
+
+@define-color tooltip_background  rgba(35, 49, 82, 0.9);
+@define-color tooltip_text #7eb8d4;
+/*----------------*/
+/*-----GLOBAL-----*/
+/*----------------*/
+
+* {
+  font-family: "Monaspace Neon Frozen", "JetBrainsMono Nerd Font";
+  font-weight: 600;
+  font-size: 13px;
+}
+
+#waybar {
+  background-color: transparent;
+}
+
+/*--------------------*/
+/*-----WORKSPACES-----*/
+/*--------------------*/
+
+#workspaces {
+  margin-left: 6px;
+  margin-right: 16px;
+}
+
+#workspaces button {
+  background-color: @background;
+  color: @workspaces_button_off;
+  border-radius: 50%;
+  margin: 5px 4px;
+  padding: 0;
+  min-width: 20px;
+  min-height: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  border: 2px solid @workspaces_button_off;
+  box-shadow: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+  background-color: @clock_idle;
+  color: @workspaces_button_off;
+  border: 2px solid @clock_idle;
+  box-shadow: 1px 1.5px 5px @clock_idle;
+  outline: none;
+  background-clip: border-box;
+  -gtk-outline-radius: 50%;
+}
+
+#workspaces button:not(.active):hover {
+  background: none;
+  color: @clock_idle;
+  box-shadow: 1px 1.5px 5px @clock_idle;
+  transition: none;
+  border-color: @clock_idle;
+  transition: all 0.3s ease;
+}
+
+/*-----------------*/
+/*-----SPOTIFY-----*/
+/*-----------------*/
+
+#custom-spotify {
+  color: @bluetooth_idle;
+  margin-right: 16px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#custom-spotify:hover {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @spotify_idle;
+}
+
+/*-------*/
+/*--TRAY--*/
+/*-------*/
+
+#tray menu {
+  background-color: @tray_menu;
+  border: 2px solid @tray_menu_border;
+}
+
+#tray menu menuitem {
+  color: @tray_menu_item;
+}
+
+#tray menu menuitem:hover {
+  color: @tray_menu_item_hover;
+  background-color: @tray_menu_item_hover_background;
+}
+
+/*---------------*/
+/*-----CLOCK-----*/
+/*---------------*/
+
+#clock {
+  color: @clock_idle;
+  margin: 0 15px;
+  transition: all 0.3s ease;
+  font-size: 13px;
+  border-bottom: 2px solid transparent;
+}
+
+#clock:hover {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @clock_idle;
+}
+
+/*-----------------*/
+/*-----WEATHER-----*/
+/*-----------------*/
+
+#custom-weather {
+  color: @weather_idle;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#custom-weather:hover {
+  color: @weather_hover;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @weather_idle;
+}
+
+/*----------------------------------*/
+/*-----WL-GAMMARELAY-TEMPERATURE-----*/
+/*----------------------------------*/
+
+#custom-wl-gammarelay-temperature {
+  color: @temperature_idle;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#custom-wl-gammarelay-temperature:hover {
+  color: @temperature_hover;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @temperature_idle;
+}
+
+/*----------------------------------*/
+/*-----WL-GAMMARELAY-BRIGHTNESS-----*/
+/*----------------------------------*/
+
+#custom-brightness {
+  color: @brightness_idle;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#custom-brightness:hover {
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @brightness_idle;
+}
+
+/*---------------------*/
+/*-----WIREPLUMBER-----*/
+/*---------------------*/
+
+#pulseaudio {
+  color: @sound_idle;
+  margin-right: 16px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#pulseaudio:hover {
+
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @sound_idle;
+}
+
+/*-------------------*/
+/*-----GROUP END-----*/
+/*-------------------*/
+
+#group-end {
+  margin-right: 16px;
+}
+
+/*-------------------*/
+/*-----BLUETOOTH-----*/
+/*-------------------*/
+
+#bluetooth {
+  color: @bluetooth_idle;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#bluetooth.off {
+  transition: all 0.3s ease;
+}
+
+#bluetooth:hover {
+  
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @bluetooth_idle;
+}
+
+/*---------*/
+/*---CPU---*/
+/*---------*/
+
+#cpu {
+  color: @bluetooth_idle;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#cpu:hover {
+  border-bottom: 2px solid @bluetooth_idle;
+}
+
+/*----------*/
+/*--MEMORY--*/
+/*----------*/
+
+#memory {
+  color: @bluetooth_idle;
+  margin-right: 12px;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#memory:hover {
+  border-bottom: 2px solid @bluetooth_idle;
+}
+
+/*-----------------*/
+/*-----NETWORK-----*/
+/*-----------------*/
+
+#network {
+  color: @network_idle;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#network:hover {
+
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @network_idle;
+}
+
+/*---------------*/
+/*-----POWER-----*/
+/*---------------*/
+
+#custom-power,
+#custom-lock,
+#custom-reboot {
+  color: @power_idle;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+#custom-power {
+  padding-right: 12px;
+}
+
+#custom-reboot {
+  padding-right: 12px;
+}
+
+#custom-lock {
+  padding-right: 12px;
+}
+
+#custom-power:hover,
+#custom-lock:hover,
+#custom-reboot:hover {
+
+  transition: all 0.3s ease;
+  border-bottom: 2px solid @power_idle;
+}
+
+/*-----------------*/
+/*-----TOOLTIP-----*/
+/*-----------------*/
+
+tooltip {
+  background-color: @tooltip_background;
+}
+
+tooltip label {
+  color: @tooltip_text;
+}
+
+/*-----------------*/
+/*-----BATTERY-----*/
+/*-----------------*/
+
+#battery {
+  color: #7eb8d4;
+  margin-right: 16px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+#battery:hover {
+  border-bottom: 2px solid #7eb8d4;
+}
+
+/*------------------*/
+/*-----ICON-----*/
+/*------------------*/
+
+#custom-icon {
+  background-image: url('/home/glauber/.config/waybar/assets/arch.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 19px 19px;
+  min-width: 16px;
+  margin-left: 7px;
+}
+
+/*---------------------*/
+/*-----SEPARATOR-----*/
+/*---------------------*/
+
+#custom-separator {
+  color: @clock_idle;
+  margin-right: 10px;
+}

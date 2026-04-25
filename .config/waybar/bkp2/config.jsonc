@@ -1,0 +1,101 @@
+{
+  // Waybar at top layer
+  "layer": "top",
+  "reload_on_style_change": true,
+
+  // Waybar position (top|bottom|left|right)
+  "position": "top",
+
+  // Waybar height (to be removed for auto height)
+  // "height": 10,
+
+  "passthrough": false,
+  "reload_style_on_change": true,
+
+  // Gaps between modules (4px)
+  "spacing": 10,
+
+  // Gap from the top of the screen
+  "margin-top": 0,
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-bottom": 1,
+
+  // Choose the order of the modules
+  "modules-left": ["custom/icon", "hyprland/window"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["tray","clock", "battery"],
+
+  "custom/icon": {
+    "format": ""
+  },
+  "battery": {
+    "format": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": "{capacity}%",
+    "interval": 10,
+    "on-click": "",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
+},
+
+  "hyprland/window": {
+    "separate-outputs": true,
+    //"max-length": 20,
+    "format": "{class}",
+    "rewrite": {
+      // if any window is focused display Finder
+      "": "...",
+      "kitty": "Terminal",
+      "vesktop": "Discord",
+      "zen": "Browser",
+      "org.gnome.Nautilus":"Nautilus"
+    }
+  },
+
+  // Per-module config
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "1": "i",
+      "2": "ii",
+      "3": "iii",
+      "4": "iv",
+      "5": "v",
+      "6": "vi",
+      "7": "vii",
+      "8": "viii",
+      "9": "ix",
+      "10": "x"
+    }
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "spacing": 5,
+    "show-passive-items": true
+  },
+
+  "clock": {
+    "format": "{:%a %d %b %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+     "on-click": "gnome-calendar",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#d79921'><b>{}</b></span>",
+        "days": "<span color='#ebdbb2'><b>{}</b></span>",
+        "weekdays": "<span color='#98971a'><b>{}</b></span>",
+        "today": "<span color='#cc241d'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  }
+}

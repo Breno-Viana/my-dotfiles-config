@@ -1,0 +1,217 @@
+// Author: Eduardo de Sá Coêlho Ribeiro Costa
+// Github: https://github.com/edudscrc
+// Waybar v0.12.0
+{
+  "height": 30,
+  "spacing": 10,
+  "reload_style_on_change": true,
+  "modules-left": [
+    "group/group-left"
+  ],
+  "modules-center": [
+    "group/group-center"
+  ],
+  "modules-right": [
+    "group/group-right"
+  ],
+  "group/group-left": {
+    "orientation": "horizontal",
+    "modules": [
+      "clock",
+      "custom/separator",
+      "custom/spotify",
+      "tray"
+      // "custom/sysinfo"
+    ]
+  },
+  "group/group-center": {
+    "orientation": "horizontal",
+    "modules": [
+      "hyprland/workspaces"
+    ]
+  },
+  "group/group-right": {
+    "orientation": "horizontal",
+    "modules": [
+      ///    "custom/wl-gammarelay-temperature",
+      // "custom/wl-gammarelay-brightness",
+      // "custom/wireplumber",
+       "memory",
+      "cpu",
+      "custom/separator",
+      "custom/brightness",
+      "pulseaudio",
+      "battery",
+      "custom/separator",
+      "group/group-end",
+      "group/group-power"
+    ]
+  },
+  "custom/spotify": {
+    "format": "{}",
+    "exec": "/usr/bin/python3 ~/.config/waybar/assets/mediaplayer.py --player spotify",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-scroll-up": "playerctl -p spotify next",
+    "on-scroll-down": "playerctl -p spotify previous"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "on-click": "activate",
+    "cursor": "pointer",
+    "format": "{}"
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 6
+  },
+  "battery": {
+    "format": "{capacity}%",
+    "format-charging": "{capacity}%",
+    "format-plugged": "{capacity}%",
+    "format-alt": "{capacity}%",
+    "interval": 10,
+    "on-click": "",
+    "on-scroll-up": "",
+    "on-scroll-down": ""
+  },
+  "clock": {
+    "format": "{:%d/%m/%Y %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>",
+    "on-click": "gnome-calendar",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#d79921'><b>{}</b></span>",
+        "days": "<span color='#ebdbb2'><b>{}</b></span>",
+        "weekdays": "<span color='#98971a'><b>{}</b></span>",
+        "today": "<span color='#cc241d'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  // "custom/weather": {
+  //   "format": {},
+  //   "exec": "~/.config/waybar/assets/venv/bin/python3 ~/.config/waybar/assets/weather.py",
+  //   "restart-interval": 300,
+  //   "return-type": "json"
+  // },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/wl-gammarelay-temperature": {
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "exec": "~/.config/waybar/assets/temperature_bar.sh",
+    "interval": 2,
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n +500",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateTemperature n -500"
+  },
+  "custom/wl-gammarelay-temperature-aux": {
+    "format": "",
+    "tooltip": false,
+    "exec": "wl-gammarelay-rs watch {t}"
+  },
+  "custom/brightness": {
+    "exec": "busctl --user get-property rs.wl-gammarelay / rs.wl.gammarelay Brightness | awk '{printf \"%d%%\", $2 * 100}'",
+    "interval": 2,
+    "format": "󰃞 {}",
+    "on-scroll-up": "busctl --user call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -- 0.02",
+    "on-scroll-down": "busctl --user call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -- -0.02",
+    "on-click": "busctl --user call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -- 1.0"
+  },
+  "custom/wl-gammarelay-brightness": {
+    "format": "{}",
+    "return-type": "json",
+    "tooltip": true,
+    "exec": "~/.config/waybar/assets/brightness_bar.sh",
+    "interval": 2,
+    "on-scroll-up": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d +0.05",
+    "on-scroll-down": "busctl --user -- call rs.wl-gammarelay / rs.wl.gammarelay UpdateBrightness d -0.05"
+  },
+  "custom/wl-gammarelay-brightness-aux": {
+    "format": "",
+    "tooltip": false,
+    "exec": "wl-gammarelay-rs watch {bp}"
+  },
+  "group/group-end": {
+    "orientation": "horizontal",
+    "modules": [
+      "bluetooth",
+      "network"
+    ]
+  },
+  "bluetooth": {
+    "format-no-controller": "",
+    "format-disabled": "",
+    "format-off": "<s>Bluetooth</s>",
+    "format-on": "Bluetooth",
+    "format-connected": "{device_alias}",
+    "on-click-right": "kitty -e bluetoothctl",
+    "on-click": "bluetoothctl show | grep -q \"Powered: yes\" && bluetoothctl power off || bluetoothctl power on",
+    "tooltip-format-connected": "{device_alias}\t{device_address}"
+  },
+  "network": {
+    "interval": 60,
+    "format-wifi": " {essid}",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": " disconnected",
+    "tooltip-format-ethernet": "{ifname}",
+    "tooltip-format-wifi": "{essid}",
+    "on-click": "if nmcli radio wifi | grep -q 'enabled'; then nmcli radio wifi off; else nmcli radio wifi on; fi",
+    "on-click-right": "kitty -e iwctl"
+  },
+  "group/group-power": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false
+    },
+    "modules": [
+      "custom/power", // First element is the "group leader" and won't ever be hidden
+      "custom/lock",
+      "custom/reboot"
+    ]
+  },
+  "memory": {
+    "interval": 1,
+    "format": "  {used:0.1f}G/{total:0.1f}G",
+    "on-click": "kitty -e btop"
+  },
+  "cpu": {
+    "interval": 1,
+    "format": " {usage}%",
+    "on-click": "kitty -e btop"
+  },
+  "custom/lock": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "hyprlock"
+  },
+  "custom/reboot": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "systemctl reboot"
+  },
+  "custom/power": {
+    "format": "",
+    "tooltip": false,
+    "on-click": "systemctl poweroff"
+  },
+  "custom/separator": { "format": "|" }
+}

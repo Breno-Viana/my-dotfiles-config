@@ -1,0 +1,21 @@
+ "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": { "default": ["", "", ""] },
+        "on-click": "pavucontrol"
+    },
+
+    "custom/wireplumber": {
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/assets/volume_bar.sh",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ --limit 1.0",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+    "tooltip": true
+  },
+
+  border-radius:15px;
+  border:0.5px solid @clock_idle;
+  padding:0 14px;

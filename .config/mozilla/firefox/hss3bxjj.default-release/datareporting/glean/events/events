@@ -1,0 +1,15 @@
+{"timestamp":16406338,"category":"session_restore","name":"backup_can_be_loaded_session_file","extra":{"loadfail_reason":"N/A","path_key":"clean","glean_timestamp":"1776652937037","can_load":"true"}}
+{"timestamp":16406338,"category":"session_restore","name":"backup_can_be_loaded_session_file","extra":{"loadfail_reason":"N/A","path_key":"clean","glean_timestamp":"1776652937037","can_load":"true"}}
+{"timestamp":16406339,"category":"session_restore","name":"shutdown_success_session_startup","extra":{"shutdown_reason":"N/A","shutdown_ok":"false","glean_timestamp":"1776652937038"}}
+{"timestamp":16406781,"category":"webcompatreporting","name":"reason_dropdown","extra":{"setting":"required","glean_timestamp":"1776652937480"}}
+{"timestamp":16407117,"category":"nimbus_events","name":"startup_database_consistency","extra":{"store_active_count":"32","total_store_count":"32","db_active_count":"32","glean_timestamp":"1776652937816","total_db_count":"32","trigger":"startup","primary":"database"}}
+{"timestamp":16407188,"category":"jsonfile","name":"load_autofillprofiles","extra":{"value":"error_notfounderror","glean_timestamp":"1776652937887"}}
+{"timestamp":16407218,"category":"doh","name":"state_rollback","extra":{"glean_timestamp":"1776652937916","value":"null"}}
+{"timestamp":16407671,"category":"normandy","name":"enroll_failed_nimbus_experiment","extra":{"value":"expand-vertical-tabs-callout-existing-profiles","glean_timestamp":"1776652938370","reason":"feature-conflict"}}
+{"timestamp":16407671,"category":"nimbus_events","name":"enroll_failed","extra":{"reason":"feature-conflict","experiment":"expand-vertical-tabs-callout-existing-profiles","glean_timestamp":"1776652938370"}}
+{"timestamp":16407687,"category":"nimbus_events","name":"is_ready","extra":{"glean_timestamp":"1776652938386"}}
+{"timestamp":16407705,"category":"containers","name":"container_profile_loaded","extra":{"containers":"4","glean_timestamp":"1776652938404"}}
+{"timestamp":16407768,"category":"upgrade_dialog","name":"trigger_reason","extra":{"value":"not-major","glean_timestamp":"1776652938467"}}
+{"timestamp":16412012,"category":"normandy","name":"expose_nimbus_experiment","extra":{"glean_timestamp":"1776652942711","branchSlug":"rollout","value":"new-tab-151220260328211913-to-release-149","featureId":"newtabTrainhopAddon"}}
+{"timestamp":16412012,"category":"nimbus_events","name":"exposure","extra":{"feature_id":"newtabTrainhopAddon","glean_timestamp":"1776652942711","branch":"rollout","experiment":"new-tab-151220260328211913-to-release-149"}}
+{"timestamp":16412581,"category":"doh","name":"state_shutdown","extra":{"value":"null","glean_timestamp":"1776652943280"}}
